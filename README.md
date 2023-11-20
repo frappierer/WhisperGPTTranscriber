@@ -8,10 +8,15 @@ WhisperGPTTranscriber is a Python-based tool that efficiently converts audio fil
 - **Customizable Output**: Allows users to specify output file locations.
 
 ## Installation
-Install openai and pydub (mp3 handling): ```pip install openai pydub```
+- Install openai and pydub (mp3 handling): ```pip install openai pydub```
+- Add the openai key to the .py file
+- Change the GPT Model if you want. I am using "gpt-4-1106-preview"
 
 ## Usage
 _The script takes a while (minutes). Especially when the mp3 is long. As a progress Statement, it will print the transcripts of the "chopped" mp3 into the terminal._
+
+Example: Download any Youtube Video as .mp3. There are a billion converters out there. Like https://notube.cc/de/youtube-app-v103
+Then...
 
 This will run the script and save the transcript in the same folder as the .py file:
 
