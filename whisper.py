@@ -4,7 +4,7 @@ from pydub import AudioSegment
 import tempfile
 
 # Initialize the OpenAI client
-client = OpenAI(api_key='xxxx')
+client = OpenAI(api_key='xxxxx')
 
 # Argument parsing
 parser = argparse.ArgumentParser(description='Process audio file for transcription.')
@@ -15,7 +15,8 @@ args = parser.parse_args()
 
 ## Function to split the audio file
 def split_audio(file_path, chunk_length_ms):
-    audio = AudioSegment.from_mp3(file_path)
+    # Use from_file to handle different formats, including mp4
+    audio = AudioSegment.from_file(file_path)
     chunks = []
     for i in range(0, len(audio), chunk_length_ms):
         chunks.append(audio[i:i+chunk_length_ms])
@@ -41,7 +42,7 @@ def transcribe(audio_chunk):
 # Function to post-process with GPT-4
 def post_process_transcript(transcript, system_prompt):
     response = client.chat.completions.create(
-        model="gpt-4-1106-preview",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": transcript}
@@ -63,7 +64,16 @@ def process_audio(file_path, chunk_length_ms, system_prompt, use_gpt_post_proces
 # Updated example usage with arguments
 file_path = args.audio_file
 chunk_length_ms = 10 * 60 * 1000  # 10 minutes in milliseconds
-system_prompt = "Add your prompt"
+system_prompt = """
+Here is the transcript of a meeting. Please create a concise summary of the topics discussed, decisions made and open points. The summary should include the following:
+
+Topics: A brief overview of the key discussion points.
+Decisions: All specific decisions made in the meeting.
+Open points: Points that still need to be clarified or dealt with, with corresponding responsibilities and deadlines.
+Action items: A list of tasks, who is responsible for them and by when they should be completed.
+Answer in the language of the transcript.
+Here is the transcript:
+"""
 
 full_transcript = process_audio(file_path, chunk_length_ms, system_prompt, args.gpt_post_process)
 
