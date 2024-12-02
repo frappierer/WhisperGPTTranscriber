@@ -22,7 +22,7 @@ This will run the script and save the transcript in the same folder as the .py f
 
 ```python3 whisper.py path/to/audio.mp3```
 
-This will run the script, post-process it and then save the transcript in a designated folder:
+This will run the script, creates a meeting summary it and then save the transcript in a designated folder:
 
 ```python3 whisper.py path/to/audio.mp3 --gpt_post_process --output_file path/to/output.txt```
 
