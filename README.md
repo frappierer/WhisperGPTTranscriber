@@ -1,5 +1,5 @@
 # Whisper GPT Transcriber
-WhisperGPTTranscriber is a Python-based tool that efficiently converts audio files to text using OpenAI's Whisper model and enhances the transcription accuracy with GPT-4 post-processing. It supports large audio files, offers conditional GPT-4 enhancement, and allows customizable output locations.
+WhisperGPTTranscriber is a Python-based tool that efficiently converts audio or Video files to text using OpenAI's Whisper model and enhances the transcription accuracy with GPT-4o post-processing. It supports large audio files, offers conditional GPT-4oenhancement, and allows customizable output locations.
 
 ## Features
 - **Audio Transcription**: Utilizes the Whisper model for efficient audio-to-text conversion.
@@ -10,7 +10,7 @@ WhisperGPTTranscriber is a Python-based tool that efficiently converts audio fil
 ## Installation
 - Install openai and pydub (mp3 handling): ```pip install openai pydub```
 - Add the openai key to the .py file
-- Change the GPT Model if you want. I am using "gpt-4-1106-preview"
+- Change the GPT Model if you want. I am using "gpt-4o"
 
 ## Usage
 _The script takes a while (minutes). Especially when the mp3 is long. As a progress Statement, it will print the transcripts of the "chopped" mp3 into the terminal._
@@ -27,7 +27,7 @@ This will run the script, post-process it and then save the transcript in a desi
 ```python3 whisper.py path/to/audio.mp3 --gpt_post_process --output_file path/to/output.txt```
 
 ## GPT Post-Processing
-The GPT post-processing feature in WhisperGPTTranscriber uses OpenAI's GPT-4 model to refine and enhance the transcriptions. After the initial transcription with Whisper, the text is passed through GPT-4, which corrects grammatical errors, clarifies ambiguous language, and ensures proper spelling, especially of specific terms or names.
+The GPT post-processing feature in WhisperGPTTranscriber uses OpenAI's GPT-4o model to refine and enhance the transcriptions. After the initial transcription with Whisper, the text is passed through GPT-4, which corrects grammatical errors, clarifies ambiguous language, and ensures proper spelling, especially of specific terms or names.
 
 ### Examples of GPT Post-Processing Usage
 1. **Technical Meetings**: Improves the accuracy of technical jargon in transcriptions from IT or scientific discussions.
